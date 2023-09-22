@@ -78,7 +78,21 @@
         </nav>
       </div>
     </header>
-    <main class="layout layout--3">
+    {% include 'navbar.html' %}
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% block content %}
+
+
+    {% endblock %}
+    {% comment %} <main class="layout layout--3">
       <div class="container">
         <!-- Topics Start -->
         <div class="topics">
@@ -298,7 +312,51 @@
         </div>
         <!-- Activities End -->
       </div>
-    </main>
-    <script src="script.js"></script>
+    </main> {% endcomment %}
+    {% comment %} <script src="script.js"></script> {% endcomment %}
   </body>
+</html>
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% comment %} <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" /> {% endcomment %}
+    <link type='text/css' media='screen' rel="stylesheet" href="{% static 'base/styles.css' %}" />
+    <title>StudyBuddy</title>
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% comment %} <img src="{% static 'base/images/design2.png' %}" /> {% endcomment %}
+
+    {% block content %}
+
+
+    {% endblock %}
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
 </html>
